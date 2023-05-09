@@ -13,9 +13,6 @@ export class AirdropSchema {
     ])
 
     serialize(): Buffer {
-        // const buffer = Buffer.alloc(1000)
-        // this.AIRDROP_IX_DATA_LAYOUT.encode({ ...this, variant: 0 }, buffer)
-        // return buffer.slice(0, this.AIRDROP_IX_DATA_LAYOUT.getSpan(buffer))
         const payload = {
             variant: 0,
             amount: this.amount,

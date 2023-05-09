@@ -54,10 +54,7 @@ export const DepositSingleTokenType: FC = (props: {
         const tokenAccountPool = await token.getAssociatedTokenAddress(
             poolMint,
             publicKey
-        )
-
-    
-      
+        )   
 
         const transaction = new Web3.Transaction()
 
