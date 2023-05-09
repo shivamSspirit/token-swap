@@ -1,5 +1,5 @@
 {
-  "name": "token-swap",
+  "name": "solana-token-swap",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,12 +9,26 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@types/node": "20.1.1",
-    "@types/react": "18.2.6",
-    "@types/react-dom": "18.2.4",
-    "next": "13.4.1",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "typescript": "5.0.4"
+    "@chakra-ui/react": "^1.8.9",
+    "@emotion/react": "^11.11.0",
+    "@emotion/styled": "^11.11.0",
+    "@project-serum/borsh": "^0.2.5",
+    "@solana/spl-token": "^0.2.0",
+    "@solana/spl-token-swap": "^0.1.4",
+    "@solana/wallet-adapter-react-ui": "^0.9.31",
+    "@solana/wallet-adapter-wallets": "^0.19.16",
+    "framer-motion": "^6.5.1",
+    "http": "^0.0.1-security",
+    "next": "12.1.5",
+    "react": "18.0.0",
+    "react-dom": "18.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "17.0.25",
+    "@types/react": "18.0.6",
+    "@types/react-dom": "18.0.2",
+    "eslint": "8.13.0",
+    "eslint-config-next": "12.1.5",
+    "typescript": "4.6.3"
   }
 }
