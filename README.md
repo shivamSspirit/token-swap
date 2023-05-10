@@ -1,4 +1,4 @@
-# learn spl token swap using this example project
+# Learn spl token swap using this SPL Token Swap dapp
 
 ## 🎬 Recorded Sessions
 | Link | Instructor | Event |
@@ -8,6 +8,10 @@
 ## What is spl-token-swap program ?
 
 The Token Swap Program allows simple trading of token pairs without a centralized limit order book. The program uses a mathematical formula called "curve" to calculate the price of all trades.
+
+Unlike the Token Program, there is no Solana-maintained deployment of the Token Swap Program. Rather, Solana provides source code for the Token Swap Program as a reference implementation that you can fork and deploy yourself. Throughout this course, we'll be using the deployment maintained by Serum at address SwaPpA9LAaLfeLi3a68M4DjnLqgtticKg6CnyNwgAC8.
+
+Solana also maintains the @solana/spl-token-swap JS library. This library provides helper functions for interacting with a token swap program. Each helper function takes an argument representing a token swap program ID.
 
 ## 🔧 Dependencies
 
@@ -39,22 +43,22 @@ By the end of this course, you're gonna build a token swap example, using the in
 
 This looks like a lot, but trust me, it isn't. You're going to understand all of this pretty fast.
 
----
 
-**1. Getting started with Token swap**
-**1.1 - Installing spl-token-swap**
-**1.2 - Installing spl-token**
-**1.3 - Installing solana/wallet-adapter-react-ui**
-**1.4 - Installing solana/wallet-adapter-wallets**
-**1.5 - Installing project-serum/borsh**
-**1.6 - Installing chakra-ui/react**
+- **1. Getting started with Token swap**
+  - 1.1 - Installing spl-token-swap
+  - 1.2 - Installing spl-token
+  - 1.3 - Installing solana/wallet-adapter-react-ui
+  - 1.4 - Installing solana/wallet-adapter-wallets
+  - 1.5 - Installing project-serum/borsh
+  - 1.6 - Installing chakra-ui/react
 
 To installing these dependency, you are going to have to download using npm or yarn for this project we using npm.
 
 ###
 In this program we are using hooks like useWallet and useConnection for using wallet and web3 connection
 also we utilize the TokenSwap, TOKEN_SWAP_PROGRAM_ID, TOKEN_PROGRAM_ID for interacting with swap pool
-we are importing these from our installed dependency
+we are importing these from our installed dependency.
+we are utilizing a swap pool that is live on devnet we don't need to create the swap pool for this course.
 ###
 
 
@@ -221,7 +225,7 @@ const handleBobTransactionSubmit = async (airdrop: AirdropSchema) => {
 
 
 **1.2.3 - in these handler instruction we use some accounts for a
-successful airdrop
+successful airdrop**
 ```ts 
 export const AliceMint = new Web3.PublicKey(
     "DWiD4EVUtnsgqoGbdSK5kBjHRJ7XoGx58WPHBu7t73Dh"
@@ -239,13 +243,23 @@ export const airdropPDA = new Web3.PublicKey(
     "99ynLfSvcRXwYMKv4kmbcAyGxhfD7KfgrsuHTx9Dvoot"
 )
 ```
-**
 
-**1.3 - deposit liquidity to the pool **
+### we are using some accounts, every account has different use cases in the token swap
+
+  - tokenSwapStateAccount - the token swap state account
+  - swapAuthority - the swap pool authority
+  - publicKey - the delegate over the user token account
+  - AliceATA - Alice token account to transfer tokens into the swap
+  - poolAliceAccount - swap pool token account to receive tokens transferred from the Alice
+  - poolBobAccount - swap pool token account to send tokens to the Bob
+  - BobATA - Bob token account to receive tokens sent from the swap pool
+  - poolMint - the LP-token mint address
+  - feeAccount - the token account which receives the owner trade fees
+
+
+**1.3 - deposit liquidity to the pool**
 
 for depositing liquidity to the swap pool we need some account and instruction
-
-
 
 ```ts
 export const AliceMint = new Web3.PublicKey(
@@ -334,7 +348,7 @@ const handleTransactionSubmit = async () => {
          transaction.add(instruction)
 }
 ```
-**1.4 - withdraw your deposited liquidity **
+**1.4 - withdraw your deposited liquidity**
 
 for withdrawing liquidity from the swap pool we need some account and instruction
 
@@ -433,7 +447,7 @@ after importing these in withdraw component we can use these to initiate instruc
  }
 ```
 
-**1.5 - swapping from Alice token to the Bob token **
+**1.5 - swapping from Alice token to the Bob token**
 
 for swapping from Alice token to the Bob token we need some accounts and instruction
 
